@@ -6,6 +6,6 @@ exports.handler = (evt, ctx, cb) => {
         headers: {
             "Access-Control-Allow-Origin": "*"
         },
-        body: "Hi guys."
+        body: "Hi guys. Awesome.  There was an attempt."
     });
 };
