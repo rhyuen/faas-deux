@@ -1,0 +1,24 @@
+{
+  "name": "functionsagain",
+  "version": "1.0.0",
+  "description": "> Just a list of functions for use on the netlify platform",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "netlify-lambda serve functions"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rhyuen/faas-deux.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rhyuen/faas-deux/issues"
+  },
+  "homepage": "https://github.com/rhyuen/faas-deux#readme",
+  "dependencies": {
+    "netlify-lambda": "0.4.0"
+  }
+}
