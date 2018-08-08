@@ -9,8 +9,12 @@ exports.handler = (evt, ctx, cb) => {
     cb(null, {
         statusCode: 200, 
         headers: {
-            "Access-Control-Allow-Origin": "*"
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json"
         },
-        body: `The path is as follows: ${requestPath}. \n The method type is ${requestMethod}.`
+        body: {
+            message: `The path is as follows: ${requestPath}. \n The method type is ${requestMethod}.`,
+            another: "Oh look, this may or may not work."   
+        }
     });
 };
