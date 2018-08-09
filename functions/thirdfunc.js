@@ -12,4 +12,4 @@ exports.handler = (evt, ctx, cb) => {
             message: `The path is as follows: ${requestPath}. \n The method type is ${requestMethod}.`            
         }
     });
-}
+};
