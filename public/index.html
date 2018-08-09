@@ -7,11 +7,21 @@
         Hello, I am trying the functions thing everyone is talking about.
         <section>
             <ul>
+                <li><a href = "/.netlify/functions/six">six</a></li>
+                <li><a href = "/.netlify/functions/five">five</a></li>
                 <li><a href = "/.netlify/functions/fourth">fourth</a></li>
-                <li><a href = "/.netlify/functions/thirdfunc">third</a></li>    
+                <li><a href = "/.netlify/functions/third">third</a></li>    
                 <li><a href = "/.netlify/functions/second">second</a></li>
-                <li><a href = "/.netlify/functions/firstfunction">first</a></li>                
+                <li><a href = "/.netlify/functions/first">first</a></li>                
             </ul>
         </section>
+        <script type = "text/javascript">
+            const url = "https://ryfaas.netlify.com/.netlify/functions/six";
+            fetch(url)
+                .then(res => res.json())
+                .then(res => {
+                    console.log(res.data);
+                });
+        </script>
     </body>    
 </html>
