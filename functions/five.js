@@ -8,7 +8,8 @@ exports.handler = (evt, ctx, cb) => {
     cb(null, {
         statusCode: 200, 
         headers: {
-            "Access-Control-Allow-Origin": "*"
+            "Access-Control-Allow-Origin": "*",
+            "Content-Type": "application/json"
         },
         body: `RNG perhaps. ${list[selection]}`
     });
