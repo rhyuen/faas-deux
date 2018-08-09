@@ -1,6 +1,10 @@
 exports.handler = (evt, ctx, cb) => {
-    const requestPath = evt.path;
-    const requestMethod = evt.httpMethod;
+    const list = [
+        "https://engadget.com",
+        "https://theverge.com",
+        "https://reddit.com"
+    ];
+    const selection = Math.floor(Math.random()*10) % list.length;
 
     cb(null, {
         statusCode: 200, 
@@ -9,7 +13,7 @@ exports.handler = (evt, ctx, cb) => {
             "Content-Type": "application/json"
         },
         body: {
-            message: `The path is as follows: ${requestPath}. \n The method type is ${requestMethod}.`            
+            message: `RNG perhaps. ${list[selection]}`
         }
     });
 }
