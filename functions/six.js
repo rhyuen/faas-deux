@@ -1,6 +1,6 @@
 exports.handler = (evt, ctx, cb) => { 
     const message = {
-        data: ["apple", "orange", "lemon", "lime", "blueberry", "grape", "plum"];
+        data: ["apple", "orange", "lemon", "lime", "blueberry", "grape", "plum"]
     };
 
     cb(null, {
