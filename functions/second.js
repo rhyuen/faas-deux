@@ -4,6 +4,10 @@ exports.handler = (evt, ctx, cb) => {
 
     const requestPath = evt.path;
     const requestMethod = evt.httpMethod;
+    const message = {
+        message: `The path is as follows: ${requestPath}. \n The method type is ${requestMethod}.`,
+        another: "Oh look, this may or may not work."   
+    };
 
 
     cb(null, {
@@ -11,9 +15,6 @@ exports.handler = (evt, ctx, cb) => {
         headers: {
             "Access-Control-Allow-Origin": "*"            
         },
-        body: {
-            message: `The path is as follows: ${requestPath}. \n The method type is ${requestMethod}.`,
-            another: "Oh look, this may or may not work."   
-        }
+        body: JSON.stringify(message)
     });
 };
