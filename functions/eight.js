@@ -1,6 +1,9 @@
 const express = require("express");
 
 exports.handler = (evt, ctx, cb) => {
+    //express not in the package and being declared in the file results in an error.
+    //express IN the package and declared...let's see how that works.
+    //uuid works when in the package.json and node_modules added to version control.
     const app = express();
 
     cb(null, {
