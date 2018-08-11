@@ -1,5 +1,8 @@
+const uuid = require("uuid/v4");
+
 exports.handler = (evt, ctx, cb) => {
     console.log(evt);
+    const val = uuid();    
     
     cb(null, {
         statusCode: 200, 
@@ -7,6 +10,6 @@ exports.handler = (evt, ctx, cb) => {
             "Access-Control-Allow-Origin": "*",
             "Content-Type": "application/json"
         },
-        body: JSON.stringify(evt)
+        body: val
     });
 };
