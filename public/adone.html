@@ -1,0 +1,46 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Hi guys</title>
+        <style>
+            .mountpoint{
+
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Ad page</h1>
+        <nav>
+            <span><a href = "/">Home</a></span>
+            <span><a href = "/adone.html">Ad</a></span>
+        </nav>
+        <section>
+          <div class = "mountpoint">
+              <div class = "ad_container"><img class = "ad" src = ""/></div>
+              <div class = "ad_container"><img class = "ad" src = ""/></div>
+              <div class = "ad_container"><img class = "ad" src = ""/></div>
+              <div class = "ad_container"><img class = "ad" src = ""/></div>
+              <div class = "ad_container"><img class = "ad" src = ""/></div>
+              <div class = "ad_container"><img class = "ad" src = ""/></div>
+              <div class = "ad_container"><img class = "ad" src = ""/></div>
+              <div class = "ad_container"><img class = "ad" src = ""/></div>
+              <div class = "ad_container"><img class = "ad" src = ""/></div>
+          </div>
+        </section>
+        <script type = "text/javascript">
+            const url = "https://ryfaas.netlify.com/.netlify/functions/nine";
+            fetch(url)
+                .then(res => res.json())
+                .then(res => {                                                                                    
+                    Array.from(document.getElementsByClassName("ad")).forEach(el => {
+                                const correct_random = Math.floor(Math.random()*10) % res.addresses.length;
+                                console.log(correct_random);
+                                console.log(data.count);
+                                console.log(document.cookie);                        
+                                //const random = Math.floor(Math.random()*10) % document.getElementsByClassName("ad").length;
+                                el.src = data.addresses[correct_random];
+                            });                  
+                });
+        </script>                                                     
+    </body>    
+</html>
