@@ -3,11 +3,15 @@
     <head>
         <title>Hi guys</title>
         <style>
+            body{
+                margin: 0;
+            }
             .mountpoint{
 
             }
 
             .ad{
+                height: 20vh;
                 width: 100%;
                 min-width: 10vw;
                 min-height: 10vh;
@@ -23,32 +27,38 @@
         </nav>
         <section>
           <div class = "mountpoint">
-              <div class = "ad_container"><img class = "ad" src = ""/></div>
-              <div class = "ad_container"><img class = "ad" src = ""/></div>
-              <div class = "ad_container"><img class = "ad" src = ""/></div>
-              <div class = "ad_container"><img class = "ad" src = ""/></div>
-              <div class = "ad_container"><img class = "ad" src = ""/></div>
-              <div class = "ad_container"><img class = "ad" src = ""/></div>
-              <div class = "ad_container"><img class = "ad" src = ""/></div>
-              <div class = "ad_container"><img class = "ad" src = ""/></div>
-              <div class = "ad_container"><img class = "ad" src = ""/></div>
+              <div class = "ad_container">
+                  <img class = "ad" src = "">
+                </div>
+              <div class = "ad_container"><img class = "ad" src = ""></div>
+              <div class = "ad_container"><img class = "ad" src = ""></div>
+              <div class = "ad_container"><img class = "ad" src = ""></div>
+              <div class = "ad_container"><img class = "ad" src = ""></div>
+              <div class = "ad_container"><img class = "ad" src = ""></div>
+              <div class = "ad_container"><img class = "ad" src = ""></div>
+              <div class = "ad_container"><img class = "ad" src = ""></div>
+              <div class = "ad_container"><img class = "ad" src = ""></div>
           </div>
         </section>
         <script type = "text/javascript">
-            const url = "https://ryfaas.netlify.com/.netlify/functions/nine";
-            fetch(url)
-                .then(res => res.json())
-                .then(res => {                      
-                    console.log(res.addresses);
-                    Array.from(document.getElementsByClassName("ad"))
-                        .forEach(el => {
-                            const correct_random = Math.floor(Math.random()*10) % res.addresses.length;
-                            console.log(correct_random);                                
-                            console.log(document.cookie);                        
-                            //const random = Math.floor(Math.random()*10) % document.getElementsByClassName("ad").length;
-                            el.src = res.addresses[correct_random];
-                        });                  
+            window.onload = () => {
+                const url = "https://ryfaas.netlify.com/.netlify/functions/nine";
+                fetch(url)
+                    .then(res => res.json())
+                    .then(res => {                      
+                        console.log(res.addresses);
+                        Array.from(document.getElementsByClassName("ad"))
+                            .forEach(el => {
+                                const correct_random = Math.floor(Math.random()*10) % res.addresses.length;
+                                console.log(correct_random);                                
+                                console.log(document.cookie);                        
+                                //const random = Math.floor(Math.random()*10) % document.getElementsByClassName("ad").length;
+                                el.src = res.addresses[correct_random];
+                                el.alt = res.addresses[corrent_random].split("/")[5];
+                            });                  
                 });
+            };
+           
         </script>                                                     
     </body>    
 </html>
