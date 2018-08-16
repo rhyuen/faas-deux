@@ -7,14 +7,20 @@
                 margin: 0;
             }
             .mountpoint{
-
+                display: flex;
+                flex-wrap: wrap;
             }
 
+            .ad_container{
+                height: 25vh;                
+                width: 20vw;                
+                background: lavender;
+            }
             .ad{
-                height: 20vh;
-                width: 100%;
-                min-width: 10vw;
-                min-height: 10vh;
+                max-width: 20vw;
+                max-height: 25vh;
+                width: 20vw;
+                height: auto;
                 background: lavender;
             }
         </style>
@@ -51,10 +57,9 @@
                             .forEach(el => {
                                 const correct_random = Math.floor(Math.random()*10) % res.addresses.length;
                                 console.log(correct_random);                                
-                                console.log(document.cookie);                        
-                                //const random = Math.floor(Math.random()*10) % document.getElementsByClassName("ad").length;
+                                console.log(document.cookie);                                
                                 el.src = res.addresses[correct_random];
-                                el.alt = res.addresses[correct_random].split("/")[5];
+                                el.alt = res.addresses[correct_random].split("/")[3];
                             });                  
                 });
             };
