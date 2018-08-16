@@ -6,7 +6,8 @@
             body{
                 margin: 0;
             }
-            .mountpoint{
+            
+            #mountpoint{
                 display: flex;
                 flex-wrap: wrap;
             }
@@ -32,8 +33,8 @@
             <span><a href = "/adone.html">Ad</a></span>
         </nav>
         <section>
-          <div class = "mountpoint">
-              <div class = "ad_container">
+          <div id = "mountpoint">
+              <!-- <div class = "ad_container">
                   <img class = "ad" src = "">
                 </div>
               <div class = "ad_container"><img class = "ad" src = ""></div>
@@ -43,10 +44,10 @@
               <div class = "ad_container"><img class = "ad" src = ""></div>
               <div class = "ad_container"><img class = "ad" src = ""></div>
               <div class = "ad_container"><img class = "ad" src = ""></div>
-              <div class = "ad_container"><img class = "ad" src = ""></div>
+              <div class = "ad_container"><img class = "ad" src = ""></div> -->
           </div>
         </section>
-        <script type = "text/javascript">
+        <!-- <script type = "text/javascript">
             window.onload = () => {
                 const url = "https://ryfaas.netlify.com/.netlify/functions/nine";
                 fetch(url)
@@ -64,6 +65,30 @@
                 });
             };
            
-        </script>                                                     
+        </script>                              -->
+        <script type = "text/javascript">
+            window.onload = () => {                
+
+                const url = "https://ryfaas.netlify.com/.netlify/functions/nine";
+                fetch(url)
+                    .then(res => res.json())
+                    .then(res => {                      
+
+                        res.addresses.forEach(el => {
+                            const correct_random = Math.floor(Math.random()*10) % res.addresses.length;
+                            const marker = document.getElementById("mountpoint");
+                            const imageContainer = document.createElement("div");
+                                imageContainer.className = "ad_container";
+                            const image = document.createElement("img");
+                                image.className = "ad";
+                                image.src = res.addresses[correct_random];
+                                image.alt = res.addresses[correct_random].split("/")[2];
+                            imageContainer.appendChild(image);
+                            marker.appendChild(imageContainer);  
+                            console.log(el);
+                        });                                                                                              
+                    });
+            }
+        </script>
     </body>    
 </html>
