@@ -12,12 +12,12 @@
                 flex-wrap: wrap;
             }
 
-            .ad_container{
+            .aimg_container{
                 height: 25vh;                
                 width: 20vw;                
                 background: lavender;
             }
-            .ad{
+            .aimg{
                 max-width: 20vw;
                 max-height: 25vh;
                 width: 20vw;
@@ -33,39 +33,8 @@
             <span><a href = "/adone.html">Ad</a></span>
         </nav>
         <section>
-          <div id = "mountpoint">
-              <!-- <div class = "ad_container">
-                  <img class = "ad" src = "">
-                </div>
-              <div class = "ad_container"><img class = "ad" src = ""></div>
-              <div class = "ad_container"><img class = "ad" src = ""></div>
-              <div class = "ad_container"><img class = "ad" src = ""></div>
-              <div class = "ad_container"><img class = "ad" src = ""></div>
-              <div class = "ad_container"><img class = "ad" src = ""></div>
-              <div class = "ad_container"><img class = "ad" src = ""></div>
-              <div class = "ad_container"><img class = "ad" src = ""></div>
-              <div class = "ad_container"><img class = "ad" src = ""></div> -->
-          </div>
-        </section>
-        <!-- <script type = "text/javascript">
-            window.onload = () => {
-                const url = "https://ryfaas.netlify.com/.netlify/functions/nine";
-                fetch(url)
-                    .then(res => res.json())
-                    .then(res => {                      
-                        console.log(res.addresses);
-                        Array.from(document.getElementsByClassName("ad"))
-                            .forEach(el => {
-                                const correct_random = Math.floor(Math.random()*10) % res.addresses.length;
-                                console.log(correct_random);                                
-                                console.log(document.cookie);                                
-                                el.src = res.addresses[correct_random];
-                                el.alt = res.addresses[correct_random].split("/")[3];
-                            });                  
-                });
-            };
-           
-        </script>                              -->
+          <div id = "mountpoint"></div>
+        </section>       
         <script type = "text/javascript">
             window.onload = () => {                
 
@@ -73,14 +42,15 @@
                 fetch(url)
                     .then(res => res.json())
                     .then(res => {                      
-
+                        
+                        //it's because of adblock origin.  Because of the 'ad' name in the classes.
                         res.addresses.forEach(el => {
                             const correct_random = Math.floor(Math.random()*10) % res.addresses.length;
                             const marker = document.getElementById("mountpoint");
                             const imageContainer = document.createElement("div");
-                                imageContainer.className = "ad_container";
+                                imageContainer.className = "aimg_container";
                             const image = document.createElement("img");
-                                image.className = "ad";
+                                image.className = "aimg";
                                 image.src = res.addresses[correct_random];
                                 image.alt = res.addresses[correct_random].split("/")[2];
                             imageContainer.appendChild(image);
