@@ -1,6 +1,6 @@
-const request = require("request");
-exports.handler = (evt, ctx, cb) => {
 
+exports.handler = (evt, ctx, cb) => {
+    const request = require("request");
     request("https://reddit.com/.json", (err, res, body) => {
         if(err){
             return cb(err);    
