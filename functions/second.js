@@ -9,7 +9,6 @@ exports.handler = (evt, ctx, cb) => {
         another: "Oh look, this may or may not work."   
     };
 
-
     cb(null, {
         statusCode: 200, 
         headers: {
