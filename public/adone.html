@@ -5,6 +5,7 @@
         <style>
             body{
                 margin: 0;
+                font-family: "Segoe UI";
             }
             
             #mountpoint{
@@ -23,6 +24,7 @@
                 width: 20vw;
                 height: auto;
                 background: lavender;
+                object-fit: cover;
             }
         </style>
     </head>
@@ -36,9 +38,35 @@
           <div id = "mountpoint"></div>
         </section>       
         <script type = "text/javascript">
-            window.onload = () => {                
+            function setIdentifiers(){
+                localStorage.setItem("faas_id", Math.floor(Math.random()*1000000));
+                localStorage.setItem("faas_count", 0);
+            }
 
+            function getIdentifier(){
+                if(!localStorage.getItem("faas_id")){
+                    setIdentifier();
+                    return localStorage.getItem("faas_id");
+                }else{
+                    localStorage.setItem("faas_count", localStorage.getItem("faas_count") + 1);
+                    return {
+                        id: localStorage.getItem("faas_id"), 
+                        count: localStorage.getItem("faas_count")
+                    };
+                }
+            }
+
+            function resetId(){
+                localStorage.clear();
+            }
+
+            window.onload = () => {                
                 const url = "https://ryfaas.netlify.com/.netlify/functions/nine";
+
+                //TODO: add 'faas_count' and 'faas_id' as options to the fetch request
+                //TODO: be able to change behaviour based on faas_id and/or faas_count
+
+
                 fetch(url)
                     .then(res => res.json())
                     .then(res => {                      
