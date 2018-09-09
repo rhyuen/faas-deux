@@ -48,6 +48,15 @@
                     console.log("A Lemon is a %s", res.data[2]);
                     console.log("I have %s elements", res.data.length);
                 });
+
+            const fileUrl = "./data.json";
+            fetch(fileUrl)
+                .then(res => res.json())
+                .then(res => {
+                    res.trends.map(trend => {
+                        console.log(trend);
+                    });
+                });
         </script>
     </body>    
 </html>
