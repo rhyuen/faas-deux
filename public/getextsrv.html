@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Royu Functions</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="royufunctions" content="royu's samples for netlify functions">
+    <link rel="icon" type="image/png" href="./images/royu.png">
+    <link rel="canonical" href="https://ryfaas.netlify.com">
+    <style>
+        body{
+                margin: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                height: 100vh;
+                width: 100vw;                
+            }
+        </style>
+</head>
+
+<body>
+    <h1>An attempt at getting external services.</h1>
+    <nav <span><a href="/index.html">Home</a></span>>
+        <span><a href="/adone.html">Ad</a></span>
+        <span><a href="/getextsrv.html">ExtSrv</a></span>
+    </nav>
+    <section>
+        <div>
+
+        </div>
+    </section>
+    <script type="text/javascript">
+        const url = "https://ryfaas.netlify.com/.netlify/functions/getextservices";
+        const urldeux = "https://ryfaas.netlify.com/.netlify/functions/getExtServices";
+        fetch(urldeux)
+            .then(res => res.json())
+            .then(data => {
+
+            }).catch(e => {
+                console.error(e);
+            });
+    </script>
+</body>
+
+</html>
