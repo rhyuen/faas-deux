@@ -5,7 +5,8 @@ exports.handler = (evt, ctx, cb) => {
     "https://royuroot.now.sh/quotes/",
     "https://royuroot.now.sh/words/",
     "https://ryauth-alone.now.sh/auth",
-    "https://mailgenr8r.herokuapp.com"
+    "https://mailgenr8r.herokuapp.com",
+    "https://ryuen.now.sh/"
   ];
 
   https
