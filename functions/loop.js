@@ -1,5 +1,5 @@
 exports.handler = async (evt, ctx, cb) => {
-    let list = {};
+    let list = [];
     for (let i = 0; i < 1000; i++) {
         list.push(i);
     }
