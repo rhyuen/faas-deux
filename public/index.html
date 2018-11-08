@@ -1,64 +1,76 @@
 <!DOCTYPE HTML>
-<html lang = "en" dir = "ltr">    
-    <head>
-        <title>Royu Functions</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-        <meta name="royufunctions" content="royu's samples for netlify functions">        
-        <link rel="icon" type="image/png" href="./images/royu.png">   
-        <link rel="canonical" href="https://ryfaas.netlify.com">
-        <style>
-            body{
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Royu Functions</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="royufunctions" content="royu's samples for netlify functions">
+    <link rel="icon" type="image/png" href="./images/royu.png">
+    <link rel="canonical" href="https://ryfaas.netlify.com">
+    <style>
+        body{
                 margin: 0;
                 font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
                 height: 100vh;
                 width: 100vw;                
             }
-        </style>    
-    </head>
-    <body>
-        <h1>Hello, I am trying the functions thing everyone is talking about.</h1>
-        <nav>
-            <span><a href = "/adone.html">Ad</a></span>
-        </nav>
-        <section>
-            <article>
-                <ul>
-                    <li><a href = "/.netlify/functions/nine">JSONimageURLs.</a></li>
-                    <li><a href = "/.netlify/functions/seven">seven</a>, <span>Returns a uuid from the library.</span></li>
-                    <li><a href = "/.netlify/functions/six">six</a>, <span>Returns a JSON response with key 'data' which is an array of strings.</span></li>
-                    <li><a href = "/.netlify/functions/five">five</a>, <span>Returns a random string.</span></li>
-                    <li><a href = "/.netlify/functions/fourth">fourth</a>, <span>Returns a JSON response with two keys and values.</span></li>
-                    <li><a href = "/.netlify/functions/third">third</a>, <span>Returns a response with the req.URL and req.path</span></li>    
-                    <li><a href = "/.netlify/functions/second">second</a>, <span>Returns a JSON response with req.URL and req.path</span></li>
-                    <li><a href = "/.netlify/functions/first">first</a> <span>Returns plain text.</span></li>                
-                </ul>
-            </article>            
-            <article>
-                What follows is an attempt at 'rel="noopener"': <br/>
-                <a href = "/norel.html" target = "_blank" rel = "noopener">No-rel</a><br/>
-                It seems that 'window.opener' is null when 'rel = "noopener"' is set.<br/>
-                <a href = "/norel.html" target = "_blank">rel not set</a>
-            </article>
-        </section>
-        <script type = "text/javascript">
-            const url = "https://ryfaas.netlify.com/.netlify/functions/six";
-            fetch(url)
-                .then(res => res.json())
-                .then(res => {
-                    console.log(res.data);
-                    console.log("A Lemon is a %s", res.data[2]);
-                    console.log("I have %s elements", res.data.length);
-                });
+            .main{
+                display: flex;
+                flex-direction:column;                
+                align-items: center;
+            }
+        </style>
+</head>
 
-            const fileUrl = "./data.json";
-            fetch(fileUrl)
-                .then(res => res.json())
-                .then(res => {
-                    res.trends.map(trend => {
-                        console.log(trend);
-                    });
+<body>
+    <h1>Hello, I am trying the functions thing everyone is talking about.</h1>
+    <nav>
+        <span><a href="/adone.html">Ad</a></span>
+    </nav>
+    <section class="main">
+        <article>
+            <ul>
+                <li><a href="/.netlify/functions/nine">JSONimageURLs.</a></li>
+                <li><a href="/.netlify/functions/seven">seven</a>, <span>Returns a uuid from the library.</span></li>
+                <li><a href="/.netlify/functions/six">six</a>, <span>Returns a JSON response with key 'data' which is
+                        an array of strings.</span></li>
+                <li><a href="/.netlify/functions/five">five</a>, <span>Returns a random string.</span></li>
+                <li><a href="/.netlify/functions/fourth">fourth</a>, <span>Returns a JSON response with two keys and
+                        values.</span></li>
+                <li><a href="/.netlify/functions/third">third</a>, <span>Returns a response with the req.URL and
+                        req.path</span></li>
+                <li><a href="/.netlify/functions/second">second</a>, <span>Returns a JSON response with req.URL and
+                        req.path</span></li>
+                <li><a href="/.netlify/functions/first">first</a> <span>Returns plain text.</span></li>
+            </ul>
+        </article>
+        <article>
+            What follows is an attempt at 'rel="noopener"': <br />
+            <a href="/norel.html" target="_blank" rel="noopener">No-rel</a><br />
+            It seems that 'window.opener' is null when 'rel = "noopener"' is set.<br />
+            <a href="/norel.html" target="_blank">rel not set</a>
+        </article>
+    </section>
+    <script type="text/javascript">
+        const url = "https://ryfaas.netlify.com/.netlify/functions/six";
+        fetch(url)
+            .then(res => res.json())
+            .then(res => {
+                console.log(res.data);
+                console.log("A Lemon is a %s", res.data[2]);
+                console.log("I have %s elements", res.data.length);
+            });
+
+        const fileUrl = "./data.json";
+        fetch(fileUrl)
+            .then(res => res.json())
+            .then(res => {
+                res.trends.map(trend => {
+                    console.log(trend);
                 });
-        </script>
-    </body>    
+            });
+    </script>
+</body>
+
 </html>
