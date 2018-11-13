@@ -11,8 +11,7 @@
     <style>
         body{
                 margin: 0 auto;
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                height: 100vh;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;                
                 width: 100vw;                                
                 background: lavender;
             }
@@ -22,16 +21,28 @@
                 background : white;
                 align-items: center;
             }
+
+            nav > span > a{
+                text-decoration: none;
+            }
+
+            footer{
+                background: #343434;
+                color: white;
+                width: 100%;                
+            }
         </style>
 </head>
 
 <body>
-    <h1>Hello, I am trying the functions thing everyone is talking about.</h1>
+    <h1>An attempt at functions</h1>
+    <h4>and some grid stuff.</h4>
     <nav>
         <span><a href="/adone.html">Ad</a></span>
-        <span><a href="/gridone.html">Ad</a></span>
+        <span><a href="/gridone.html">Grid</a></span>
         <span><a href="/mason_responsive.html">Grid2 + Nav (Responsive)</a></span>
         <span><a href="/mason_max_width.html">Grid3 + Nav (Responsive) + Set Max Width</a></span>
+        <span><a href="/mason_width_card.html">Grid4 + Card</a></span>
     </nav>
     <section class="main">
         <article>
@@ -58,6 +69,9 @@
                 <a href="/norel.html" target="_blank">rel not set</a></li>
             </ul>
         </article>
+        <footer>
+            Some links for time-consumption are here.
+        </footer>
     </section>
     <script type="text/javascript">
         const url = "https://ryfaas.netlify.com/.netlify/functions/six";
