@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Royu Functions</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="royufunctions" content="royu's samples for netlify functions" />
+    <link rel="icon" type="image/png" href="./images/royu.png" />
+    <link rel="canonical" href="https://ryfaas.netlify.com" />
+    <style>
+        body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        width: 100vw;
+      }
+      
+      nav{
+          position: fixed;
+          z-index: 2;
+          top: 0;
+          height: 10vh;
+          width: 100%;            
+          display: grid;          
+          border-bottom:1px solid rgba(0,0,0,0.1);
+          background: white;
+          grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 75ch) minmax(1.2rem, 1fr);
+      }
+
+      .hero{
+          position: relative;
+          top: 10vh;
+          background-image: url("./images/longpicture.jpeg");
+          height: 30vh;
+          background-position: center;
+          object-fit: scale-down;                    
+      }
+ 
+      .post{
+          position: relative;
+          top: 10vh;
+          display: grid;
+          grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 75ch) minmax(1.2rem, 1fr);
+          
+      }
+      h1{    
+          grid-column: 2;      
+      }      
+
+      p{
+          grid-column: 2;
+          line-height: 1.5;
+          font-size: 1rem;
+      }
+
+      .top, .links, img{
+          grid-column: 1/4;
+          width: 100%;
+          max-width: 100ch;
+          justify-self: center;
+      }
+  
+      .top{
+          grid-row-start: 1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;                      
+      }            
+      .links{
+          grid-row-start: 2;        
+          display: flex;
+          align-items: center;
+      }
+      .link__item{
+          text-transform: uppercase;          
+          margin-right: 1rem;
+      }
+      
+      .button--signup{          
+          padding: 10px 20px;
+          background: #57AD68;
+          color: white;
+          border: 0;
+      }
+      .button--signup:focus{
+          outline: none;
+      }
+      .icon{          
+          position: relative;
+          background: black;
+          width: 100%;
+          margin-left: 0;
+      }
+      .icon:after{
+          content: "";
+          display: block;
+          padding-bottom: 100%;
+      }
+      .icon .content{
+          position: absolute;
+          color: white;
+          display: flex;
+          font-weight: 600;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;          
+      }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <section class="top">
+            <div>
+                <figure class="icon">
+                    <div class="content">R</div>
+                </figure>
+            </div>
+            <div><input type="button" value="SIGNUP" class="button--signup"></button></div>
+        </section>
+        <section class="links">
+            <span class="link__item">CAT</span>
+            <span class="link__item">DOG</span>
+            <span class="link__item">RAM</span>
+            <span class="link__item">COW</span>
+            <span class="link__item">PIG</span>
+            <span class="link__item">BEAR</span>
+            <span class="link__item">LAMB</span>
+        </section>
+    </nav>
+    <div class="hero"></div>
+    <div class="post">
+        <h1>I am super aweomse.</h1>
+        <p>I am super duper awesome. However, sometimes my nose itches. In addition, sometimes I smell and like to roll
+            around on the floor. Guess what I am? I'm a cat. there sould be some toehr stuff here too. Merp.</p>
+
+        <p>In a distributed application, different pieces of the app are called “services.” For example, if you imagine
+            a video sharing site, it probably includes a service for storing application data in a database, a service
+            for video transcoding in the background after a user uploads something, a service for the front-end, and so
+            on.
+
+            Services are really just “containers in production.” A service only runs one image, but it codifies the way
+            that image runs—what ports it should use, how many replicas of the container should run so the service has
+            the capacity it needs, and so on. Scaling a service changes the number of container instances running that
+            piece of software, assigning more computing resources to the service in the process.
+
+            Luckily it’s very easy to define, run, and scale services with the Docker platform -- just write a
+            docker-compose.yml file.</p>
+        <p>Look for output for the web service, prepended with your app name. If you named it the same as shown in this
+            example, the name is getstartedlab_web. The service ID is listed as well, along with the number of
+            replicas, image name, and exposed ports.
+
+            A single container running in a service is called a task. Tasks are given unique IDs that numerically
+            increment, up to the number of replicas you defined in docker-compose.yml. List the tasks for your service:</p>
+        <img src="./images/doflyelephant.jpg">
+        <h1>Java is the best.</h1>
+        <p>A container runs natively on Linux and shares the kernel of the host machine with other containers. It runs
+            a discrete process, taking no more memory than any other executable, making it lightweight.
+
+            By contrast, a virtual machine (VM) runs a full-blown “guest” operating system with virtual access to host
+            resources through a hypervisor. In general, VMs provide an environment with more resources than most
+            applications need.</p>
+        <img src="./images/donerd.jpg">
+        <h1>Another title thing.</h1>
+        <p>In part 4, you learned how to set up a swarm, which is a cluster of machines running Docker, and deployed an
+            application to it, with containers running in concert on multiple machines.
+
+            Here in part 5, you reach the top of the hierarchy of distributed applications: the stack. A stack is a
+            group of interrelated services that share dependencies, and can be orchestrated and scaled together. A
+            single stack is capable of defining and coordinating the functionality of an entire application (though
+            very complex applications may want to use multiple stacks).
+
+            Some good news is, you have technically been working with stacks since part 3, when you created a Compose
+            file and used docker stack deploy. But that was a single service stack running on a single host, which is
+            not usually what takes place in production. Here, you can take what you’ve learned, make multiple services
+            relate to each other, and run them on multiple machines.
+
+            You’re doing great, this is the home stretch!</p>
+    </div>
+    <script type="text/javascript"></script>
+</body>
+
+</html>
