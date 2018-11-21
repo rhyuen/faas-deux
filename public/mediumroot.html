@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Royu Functions</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="royufunctions" content="royu's samples for netlify functions" />
+    <link rel="icon" type="image/png" href="./images/royu.png" />
+    <link rel="canonical" href="https://ryfaas.netlify.com" />
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        width: 100vw;
+      }
+      
+      nav{
+          position: fixed;
+          z-index: 2;
+          top: 0;
+          height: 10vh;
+          width: 100%;            
+          display: grid;          
+          border-bottom: 1px solid rgba(0,0,0,0.1);
+          background: white;
+          grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 75ch) minmax(1.2rem, 1fr);          
+      }
+
+    .banner{
+        position: relative;
+        top: 10vh;
+        display: grid;
+        grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 120ch) minmax(1.2rem, 1fr);
+        grid-template-rows: repeat(3, 150px);        
+    }
+    .banner__content{        
+        grid-row: span 3;
+        grid-column-start: 2;                
+        display: grid;
+        grid-template-columns: repeat(3, autofit);
+        grid-template-rows: repeat(3, 150px);        
+        color: black;                
+    }
+    .banner__content__item{        
+        grid-column-start: 1;
+        grid-row: 1 / span 3;
+        background: lightblue;
+    }
+
+    .banner__content__item--second--a{
+        grid-column-start: 2;        
+        grid-row: 1/span 1;
+        background: palegoldenrod;
+    }
+    .banner__content__item--second--b{
+        grid-column-start: 2;        
+        grid-row: 2/span 1;
+        background: palegoldenrod;
+    }
+    .banner__content__item--second--c{
+        grid-column-start: 2;        
+        grid-row: 3/span 1;
+        background: palegoldenrod;
+    }
+    .banner__content__item--third{
+        grid-column-start: 3;
+        background: red;
+    }
+      
+      .main{
+          position: relative;
+          top: 10vh;
+          display: grid;
+          grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 100ch) minmax(1.2rem, 1fr);          
+          grid-template-rows: repeat(auto-fit, 150px);
+      }
+      .main .ad{          
+          margin: 1vh 0;
+          padding: 1vh;
+          grid-column: 2/span 1;    
+          grid-row-start: 1;                          
+          background: #03a87c;          
+          
+      }
+     .main .primary{
+         grid-column: 2/span 1;
+         display: grid;
+         grid-template-columns: repeat(auto-fit, 100px);
+         background: papayawhip;
+     }
+
+     .main .feed{
+         grid-column: 1;
+         grid-column-end: 11;
+     }
+     .main .side{
+         display: none;
+     }
+
+     @media(min-width: 500px){
+         .main .feed{
+            grid-column-start: 1; 
+            grid-column-end: 11;
+         }
+         .main .side{
+             display: none;
+         }
+     }
+
+     @media (min-width: 1000px){
+        .main .feed{
+            grid-column: 1/span 6;                  
+        }
+        .main .side{
+            display: block;
+            grid-column: 7/span 3;
+            
+        }
+     }
+
+     .side__section--font{
+         font-size: 80%;
+     }
+
+    .feed__section > h1 , .side__section h1{
+        padding: 2vh 0;
+        border-bottom: 1px solid black;        
+    }
+    .feed__section__item > h2 , .side__section > h2{
+        font-weight: 500;
+        margin-bottom: 1vh;
+        
+    }
+    .feed__section__item > article, .side__section > article{        
+        color: rgba(0,0,0,0.4);
+    }
+
+      /* h1{    
+          grid-column: 2;      
+      }      
+
+      p{
+          grid-column: 2;
+          line-height: 1.5;
+          font-size: 1rem;
+      } */
+
+      .top, .links{
+          grid-column: 1/4;
+          width: 100%;
+          max-width: 100ch;
+          justify-self: center;
+          
+      }
+
+      .top{
+          grid-row-start: 1;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;                      
+      }            
+      .links{
+          grid-row-start: 2;        
+          display: flex;
+          align-items: center;                  
+      }
+      .link__item{
+          text-transform: uppercase;          
+          margin-right: 1rem;
+      }      
+      .button--signup{          
+          padding: 10px 20px;
+          background: #57AD68;
+          color: white;
+          border: 0;
+      }
+      .button--signup:focus{
+          outline: none;
+      }
+      .icon{          
+          position: relative;
+          background: black;
+          width: 100%;
+          margin-left: 0;
+      }
+      .icon:after{
+          content: "";
+          display: block;
+          padding-bottom: 100%;
+      }
+      .icon .content{
+          position: absolute;
+          color: white;
+          display: flex;
+          font-weight: 600;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 100%;          
+      }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <section class="top">
+            <div>
+                <figure class="icon">
+                    <div class="content">R</div>
+                </figure>
+            </div>
+            <div><input type="button" value="SIGNUP" class="button--signup"></button></div>
+        </section>
+        <section class="links">
+            <span class="link__item">CAT</span>
+            <span class="link__item">DOG</span>
+            <span class="link__item">RAM</span>
+            <span class="link__item">COW</span>
+            <span class="link__item">PIG</span>
+            <span class="link__item">BEAR</span>
+            <span class="link__item">LAMB</span>
+            <span class="link__item">Wolverine</span>
+            <span class="link__item">Possum</span>
+            <span class="link__item">beaver</span>
+        </section>
+    </nav>
+    <div class="banner">
+        <div class="banner__content">
+            <div class="banner__content__item">1</div>
+            <div class="banner__content__item--second--a banner__content__item">2a </div>
+            <div class="banner__content__item--second--b banner__content__item">2b </div>
+            <div class="banner__content__item--second--c banner__content__item">2c </div>
+            <div class="banner__content__item banner__content__item--third">3</div>
+        </div>
+    </div>
+    <div class="main">
+        <section class="ad">An ad resides here.</section>
+        <section class="primary">
+            <section class="feed">
+                <section class="feed__section">
+                    <h1>Featured for members</h1>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                </section>
+                <section class="feed__section">
+                    <h1>Featured for members</h1>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                </section>
+                <section class="feed__section">
+                    <h1>Featured for members</h1>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                    <section class="feed__section__item">
+                        <h2>A bat is black and flys around.</h2>
+                        <article>Some subtext goes here.</article>
+                    </section>
+                </section>
+
+            </section>
+            <aside class="side side__section--font">
+                <h1>Listicles</h1>
+                <section class="side__section__item">
+                    <h2>A bat is black and flys around.</h2>
+                    <article>Some subtext goes here.</article>
+                </section>
+                <section class="side__section__item">
+                    <h2>A bat is black and flys around.</h2>
+                    <article>Some subtext goes here.</article>
+                </section>
+                <section class="side__section__item">
+                    <h2>A bat is black and flys around.</h2>
+                    <article>Some subtext goes here.</article>
+                </section>
+                <section class="side__section__item">
+                    <h2>A bat is black and flys around.</h2>
+                    <article>Some subtext goes here.</article>
+                </section>
+                <section class="side__section__item">
+                    <h2>A bat is black and flys around.</h2>
+                    <article>Some subtext goes here.</article>
+                </section>
+            </aside>
+        </section>
+
+
+    </div>
+    <script type="text/javascript"></script>
+</body>
+
+</html>
