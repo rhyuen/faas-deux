@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Royu Functions</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="royufunctions" content="royu's samples for netlify functions" />
+    <link rel="icon" type="image/png" href="./images/royu.png" />
+    <link rel="canonical" href="https://ryfaas.netlify.com" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        width: 100vw;
+      }
+      
+      nav{
+          position: fixed;
+          z-index: 2;
+          top: 0;
+          height: 10vh;
+          width: 100%;            
+          display: grid;          
+          border-bottom:1px solid rgba(0,0,0,0.1);
+          background: white;
+          grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 100ch) minmax(1.2rem, 1fr);
+      }
+                  
+      .top, .links{
+          grid-column: 1/4;
+          width: 100%;
+          max-width: 100ch;
+          justify-self: center;
+      }
+  
+      .top{
+          grid-row-start: 1;
+          display: flex;
+          align-items: center;          
+          justify-content: space-between;                                
+      }            
+      .links{
+          grid-row-start: 2;        
+          display: flex;
+          align-items: center;
+      }
+      .link__item{
+          text-transform: uppercase;          
+          margin-right: 1rem;          
+      }
+      .link__item:first-child{
+          margin-left: 1rem;
+      }
+      
+      .button--signup{          
+          padding: 10px 20px;
+          background: #57AD68;
+          color: white;
+          border: 0;
+      }
+      .button--signup:focus{
+          outline: none;
+      }
+      .icon{          
+          position: relative;
+          left: 1rem;
+          background: black;
+          width: 100%;
+          margin-left: 0;
+          border-radius: 50%;          
+      }
+      .icon:after{
+          content: "";
+          display: block;
+          padding-bottom: 100%;
+      }
+      .icon .content{
+          position: absolute;
+          color: white;
+          display: flex;
+          font-weight: 600;
+          justify-content: center;
+          align-items: center;          
+          width: 100%;
+          height: 100%;          
+      }
+
+      .main{
+          position: relative;
+          top: 10vh;          
+          display: grid;          
+          grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 100ch) minmax(1.2rem, 1fr);
+      }
+
+   
+
+      .moments{
+          margin: 1rem;
+          grid-column-start: 2;
+          color: black;          
+          display: grid;
+          grid-gap: 20px;          
+          grid-template-columns: repeat(6, 1fr);                      
+          grid-template-rows: repeat(12, 200px);          
+      }
+
+    @media only screen and (min-width: 700px){
+        .moments{
+            grid-template-columns: repeat(12, 1fr);                    
+        }
+    }
+
+      .moments__grid{          
+          grid-column: span 6;          
+          background: white;
+          display: flex;
+          min-height: 200px;
+      }
+      .item__picture{
+          width: 100%;          
+          background: rgba(0,0,0,0.1);
+      }
+      .item__picture--tall{          
+          height: 60%;          
+          margin-bottom: 1rem;
+      }
+      .item__details{
+          margin-left: 1rem;
+      }
+      .item__details h1{
+        margin: 0;                
+      }
+      .item__details p{
+          font-size: 13px;          
+      }
+      
+      .moments__grid:first-child, .moments__grid:nth-of-type(5n){
+          grid-row: span 3;                    
+          flex-direction: column;
+      }
+      
+    </style>
+</head>
+
+<body>
+    <nav>
+        <section class="top">
+            <div>
+                <figure class="icon">
+                    <div class="content">R</div>
+                </figure>
+            </div>
+            <div><input type="button" value="SIGNUP" class="button--signup"></button></div>
+        </section>
+        <section class="links">
+            <span class="link__item">Today</span>
+            <span class="link__item">News</span>
+            <span class="link__item">Pets</span>
+            <span class="link__item">Comics</span>
+        </section>
+    </nav>
+    <div class="main">
+        <section class="moments">
+            <section class="moments__grid">
+                <div class="item__picture item__picture--tall"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+        </section>
+    </div>
+    <script type="text/javascript"></script>
+</body>
+
+</html>
