@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Royu Functions</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="royufunctions" content="royu's samples for netlify functions" />
+    <link rel="icon" type="image/png" href="./images/royu.png" />
+    <link rel="canonical" href="https://ryfaas.netlify.com" />
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        width: 100vw;
+        background: #F9F9F9;
+      }
+      
+      nav{
+          position: fixed;
+          z-index: 2;
+          top: 0;
+          height: 10vh;
+          width: 100%;            
+          display: grid;          
+          border-bottom:1px solid rgba(0,0,0,0.1);
+          background: white;
+          grid-template-columns: minmax(1.2rem, 1fr) minmax(auto, 130ch) minmax(1.2rem, 1fr);
+      }
+                  
+      .top, .links{
+          grid-column: 1/4;
+          width: 100%;
+          max-width: 130ch;
+          justify-self: center;
+      }
+  
+      .top{
+          grid-row-start: 1;
+          display: flex;
+          align-items: center;          
+          justify-content: space-between;           
+      }            
+      .links{
+          grid-row-start: 2;        
+          display: flex;
+          align-items: center;
+      }
+      .link__item{
+          text-transform: uppercase;          
+          margin-right: 1rem;          
+      }
+      .link__item:first-child{
+          margin-left: 1rem;
+      }
+      
+      .button--signup{          
+          padding: 10px 20px;
+          background: #57AD68;
+          color: white;
+          border: 0;
+      }
+      .button--signup:focus{
+          outline: none;
+      }
+      .icon{          
+          position: relative;
+          left: 1rem;
+          background: black;
+          width: 100%;
+          margin-left: 0;
+          border-radius: 50%;          
+      }
+      .icon:after{
+          content: "";
+          display: block;
+          padding-bottom: 100%;
+      }
+      .icon .content{
+          position: absolute;
+          color: white;
+          display: flex;
+          font-weight: 600;
+          justify-content: center;
+          align-items: center;          
+          width: 100%;
+          height: 100%;          
+      }
+
+      .card{
+          border: 1px solid rgba(0,0,0,0.1);
+          border-radius: 5px;
+          padding: 15px;
+      }
+      .card--marginless{
+        border: 1px solid rgba(0,0,0,0.1);
+        border-radius: 5px;
+      }
+      .card h1{          
+          margin: 0;
+          font-size: 16px;          
+      }
+
+      .card__item{          
+          display: flex;
+          flex-direction: column;
+          border-bottom: 1px solid rgba(0,0,0,0.1);
+          padding: 20px 0;
+      }
+      .card__item__header{                      
+      }
+      .card__item__header--main{
+          font-weight: bold;
+          font-size: 18px;
+      }
+      .card__item__header--subtext{
+          color: rgba(0,0,0,0.7);
+      }
+      .card__item p{
+          margin: 0;          
+          font-size: 14px;
+          line-height: 1.5;
+          padding-bottom: 20px;
+      }
+      .card__item__buttons{
+          display: flex;
+      }
+      .card__item__buttons__item{
+          background: #57AD68;          
+          margin-right: 25px;
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          font-size: 12px;
+      }
+      .card__footer{
+        border-top: 1px solid rgba(0,0,0,0.1);
+        padding-top: 10px;
+        font-size: 12px;
+        color: rgba(0,0,0,0.7);
+      }
+
+      .card__ad__item{
+          display: grid;
+          padding: 10px 0 ;
+          grid-template-columns: repeat(5, 1fr);          
+          grid-template-rows: repeat(2, 1fr);          
+      }
+      .card__ad__item__icon{
+          grid-column-start: 1;
+          grid-row: 1/ span 2;
+          background: rgba(0,0,0,0.1);          
+          width: 100%;          
+      }
+      .card__ad__item__details{
+        font-size: 14px;
+        font-weight: bold;
+        text-transform: uppercase;
+        grid-row-start: 1;
+        grid-column-start: 2;
+         margin-left: 10px; 
+      }
+      .card__ad__item__button{
+         background: white;
+         border: 2px solid #57AD68; 
+         border-radius: 20px;
+         color: #57AD68;
+         font-weight: 600;
+         padding: 5px 10px;
+         grid-row-start: 2;
+         margin-left: 10px;
+        }
+      
+
+      .profile{
+          display: none;          
+          grid-area: profile;   
+          grid-template-columns: repeat(3, 1fr);
+          grid-template-rows: repeat(4, 1fr);
+          max-height: 150px;          
+          box-shadow: 10px 10px 8px rgba(0,0,0,0.1);          
+      }
+      .profile__image{          
+          top: 0;          
+          grid-row: 1 / span 2;
+          grid-column: 1/ -1;
+          background: #57AD68;                    
+      }
+      .profile__name{
+          grid-row: 3;
+          grid-column: 2/ -1;
+      }
+      .profile__details{
+          grid-row: 4;
+          grid-column: 1 / -1;
+          padding: 15px;
+          display: flex;
+      }
+      .profile__details__item{
+          margin-right: 10px;
+      }
+      .profile__details__item h1{
+          font-size: 12px;
+          margin: 0;
+      }
+      .profile__details__item p{
+          font-size: 14px;
+          margin: 0;
+      }
+      
+
+      .feed{        
+        grid-area: feed;        
+        box-shadow: 10px 10px 8px rgba(0,0,0,0.1);
+      }
+      .trends{
+        display: none;
+        grid-area: trends;        
+        max-height: 300px;
+        overflow-y: hidden;
+        box-shadow: 10px 10px 8px rgba(0,0,0,0.1);
+        flex-direction: column;
+      }
+      .trends__item{
+          margin: 5px 0;
+      }
+      .trends__item h1{          
+          color: #57AD68;
+      }
+      .trends__item p{          
+          margin: 0;
+          font-size: 12px;
+          color: rgba(0,0,0,0.7);
+      }
+      .ads{
+        display: none;
+        grid-area: ads;                  
+        box-shadow: 10px 10px 8px rgba(0,0,0,0.1);
+      }
+      .footer{
+        display: none;
+        grid-area: footer;        
+        box-shadow: 10px 10px 8px rgba(0,0,0,0.1);
+      }
+      .main{
+        position: relative;
+        top: 10vh;          
+        margin: 2vh auto;
+        width: 100%;
+        display: grid;          
+        grid-template-columns: 1fr;
+        grid-template-areas: "feed";
+        grid-auto-rows: minmax(150px, auto);        
+      }
+      @media screen and (min-width: 700px){
+        .ads, .footer{
+              display: block;
+          }
+          .profile{
+              display: grid;
+          }
+          .trends{
+              display: flex;
+          }
+        .main{            
+            width: 100%;            
+            grid-template-columns: repeat(9, 1fr);
+            grid-gap: 14px;            
+            grid-auto-flow: dense;
+            grid-template-areas: 
+                "profile profile profile feed feed feed feed feed feed"            
+                "trends trends trends feed feed feed feed feed feed"
+                "trends trends trends feed feed feed feed feed feed"
+                "ads ads ads feed feed feed feed feed feed"
+                "ads ads ads feed feed feed feed feed feed"
+                "footer footer footer feed feed feed feed feed feed"
+                ". . . feed feed feed feed feed feed"
+        }          
+      }
+
+      @media screen and (min-width: 1100px){
+          .ads, .footer{
+              display: block;
+          }
+          .profile{
+              display: grid;
+          }
+          .trends{
+              display: flex;
+          }
+        .main{            
+            width: 130ch;            
+            grid-template-columns: repeat(12, 1fr);
+            grid-gap: 14px;            
+            grid-template-areas: 
+                "profile profile profile feed feed feed feed feed feed ads ads ads"            
+                "trends trends trends feed feed feed feed feed feed ads ads ads"
+                "trends trends trends feed feed feed feed feed feed footer footer footer"
+                ". . . feed feed feed feed feed feed . . ."
+                ". . . feed feed feed feed feed feed . . ."
+                ". . . feed feed feed feed feed feed . . ."
+                ". . . feed feed feed feed feed feed . . ."
+        }          
+      }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <section class="top">
+            <div>
+                <figure class="icon">
+                    <div class="content">R</div>
+                </figure>
+            </div>
+            <div><input type="button" value="SIGNUP" class="button--signup"></button></div>
+        </section>
+        <section class="links">
+            <span class="link__item">Today</span>
+            <span class="link__item">News</span>
+            <span class="link__item">Pets</span>
+            <span class="link__item">Comics</span>
+        </section>
+    </nav>
+    <div class="main">
+        <section class="profile card--marginless">
+            <div class="profile__image"></div>
+            <div class="profile__name">First Last</div>
+            <div class="profile__details">
+                <div class="profile__details__item">
+                    <h1>Title</h1>
+                    <p>9999</p>
+                </div>
+                <div class="profile__details__item">
+                    <h1>Title</h1>
+                    <p>9999</p>
+                </div>
+                <div class="profile__details__item">
+                    <h1>Title</h1>
+                    <p>9999</p>
+                </div>
+            </div>
+        </section>
+        <section class="trends card">
+            <h1>Trends Card</h1>
+            <div class="trends__item">
+                <h1>Item One</h1>
+                <p>Subtext for Item One</p>
+            </div>
+            <div class="trends__item">
+                <h1>Item One</h1>
+                <p>Subtext for Item One</p>
+            </div>
+            <div class="trends__item">
+                <h1>Item One</h1>
+                <p>Subtext for Item One More text goes here because text.</p>
+            </div>
+            <div class="trends__item">
+                <h1>Item One</h1>
+                <p>Subtext for Item One</p>
+            </div>
+            <div class="trends__item">
+                <h1>Item One</h1>
+                <p>Subtext for Item One</p>
+            </div>
+            <div class="card__footer">Trends Footer</div>
+
+        </section>
+        <section class="feed card">
+            <div class="card__item">
+                <div class="card__item__header">
+                    <span class="card__item__header--main">Card Item Text</span> <span class="card__item__header--subtext">Subtext</span>
+                </div>
+                <p>Some text goes here because text is text. Some text goes here because text is text. Some text goes
+                    here because text is adn theen there are issues with flex and grid. REpsonsive circles with text in
+                    the centre are intensly irritating to do. text. Some text goes here because text is text. Some text
+                    goes here because
+                    text is text. Some text goes here because text is text. Some text goes here because text is text.</p>
+                <div class="card__item__buttons">
+                    <div class="card__item__buttons__item">1</div>
+                    <div class="card__item__buttons__item">2</div>
+                    <div class="card__item__buttons__item">3</div>
+                    <div class="card__item__buttons__item">4</div>
+                </div>
+            </div>
+            <div class="card__item">
+                <div class="card__item__header">
+                    <span class="card__item__header--main">Card Item Text</span> <span class="card__item__header--subtext">Subtext</span>
+                </div>
+                <p>Some text goes here because text is text. Some text goes here because text is text. Some text goes
+                    here because text is adn theen there are issues with flex and grid. REpsonsive circles with text in
+                    the centre are intensly irritating to do. text. Some text goes here because text is text. Some text
+                    goes here because
+                    text is text. Some text goes here because text is text. Some text goes here because text is text.</p>
+                <div class="card__item__buttons">
+                    <div class="card__item__buttons__item">1</div>
+                    <div class="card__item__buttons__item">2</div>
+                    <div class="card__item__buttons__item">3</div>
+                    <div class="card__item__buttons__item">4</div>
+                </div>
+            </div>
+            <div class="card__item">
+                <div class="card__item__header">
+                    <span class="card__item__header--main">Card Item Text</span> <span class="card__item__header--subtext">Subtext</span>
+                </div>
+                <p>Some text goes here because text is text. Some text goes here because text is text. Some text goes
+                    here because text is adn theen there are issues with flex and grid. REpsonsive circles with text in
+                    the centre are intensly irritating to do. text. Some text goes here because text is text. Some text
+                    goes here because
+                    text is text. Some text goes here because text is text. Some text goes here because text is text.</p>
+                <div class="card__item__buttons">
+                    <div class="card__item__buttons__item">1</div>
+                    <div class="card__item__buttons__item">2</div>
+                    <div class="card__item__buttons__item">3</div>
+                    <div class="card__item__buttons__item">4</div>
+                </div>
+            </div>
+            <div class="card__item">
+                <div class="card__item__header">
+                    <span class="card__item__header--main">Card Item Text</span> <span class="card__item__header--subtext">Subtext</span>
+                </div>
+                <p>Some text goes here because text is text. Some text goes here because text is text. Some text goes
+                    here because text is adn theen there are issues with flex and grid. REpsonsive circles with text in
+                    the centre are intensly irritating to do. text. Some text goes here because text is text. Some text
+                    goes here because
+                    text is text. Some text goes here because text is text. Some text goes here because text is text.</p>
+                <div class="card__item__buttons">
+                    <div class="card__item__buttons__item">1</div>
+                    <div class="card__item__buttons__item">2</div>
+                    <div class="card__item__buttons__item">3</div>
+                    <div class="card__item__buttons__item">4</div>
+                </div>
+            </div>
+            <div class="card__item">
+                <div class="card__item__header">
+                    <span class="card__item__header--main">Card Item Text</span> <span class="card__item__header--subtext">Subtext</span>
+                </div>
+                <p>Some text goes here because text is text. Some text goes here because text is text. Some text goes
+                    here because text is adn theen there are issues with flex and grid. REpsonsive circles with text in
+                    the centre are intensly irritating to do. text. Some text goes here because text is text. Some text
+                    goes here because
+                    text is text. Some text goes here because text is text. Some text goes here because text is text.</p>
+                <div class="card__item__buttons">
+                    <div class="card__item__buttons__item">1</div>
+                    <div class="card__item__buttons__item">2</div>
+                    <div class="card__item__buttons__item">3</div>
+                    <div class="card__item__buttons__item">4</div>
+                </div>
+            </div>
+            <div class="card__item">
+                <div class="card__item__header">
+                    <span class="card__item__header--main">Card Item Text</span> <span class="card__item__header--subtext">Subtext</span>
+                </div>
+                <p>Some text goes here because text is text. Some text goes here because text is text. Some text goes
+                    here because text is adn theen there are issues with flex and grid. REpsonsive circles with text in
+                    the centre are intensly irritating to do. text. Some text goes here because text is text. Some text
+                    goes here because
+                    text is text. Some text goes here because text is text. Some text goes here because text is text.</p>
+                <div class="card__item__buttons">
+                    <div class="card__item__buttons__item">1</div>
+                    <div class="card__item__buttons__item">2</div>
+                    <div class="card__item__buttons__item">3</div>
+                    <div class="card__item__buttons__item">4</div>
+                </div>
+            </div>
+            <div class="card__item">
+                <div class="card__item__header">
+                    <span class="card__item__header--main">Card Item Text</span> <span class="card__item__header--subtext">Subtext</span>
+                </div>
+                <p>Some text goes here because text is text. Some text goes here because text is text. Some text goes
+                    here because text is adn theen there are issues with flex and grid. REpsonsive circles with text in
+                    the centre are intensly irritating to do. text. Some text goes here because text is text. Some text
+                    goes here because
+                    text is text. Some text goes here because text is text. Some text goes here because text is text.</p>
+                <div class="card__item__buttons">
+                    <div class="card__item__buttons__item">1</div>
+                    <div class="card__item__buttons__item">2</div>
+                    <div class="card__item__buttons__item">3</div>
+                    <div class="card__item__buttons__item">4</div>
+                </div>
+            </div>
+            <div class="card__item">
+                <div class="card__item__header">
+                    <span class="card__item__header--main">Card Item Text</span> <span class="card__item__header--subtext">Subtext</span>
+                </div>
+                <p>Some text goes here because text is text. Some text goes here because text is text. Some text goes
+                    here because text is adn theen there are issues with flex and grid. REpsonsive circles with text in
+                    the centre are intensly irritating to do. text. Some text goes here because text is text. Some text
+                    goes here because
+                    text is text. Some text goes here because text is text. Some text goes here because text is text.</p>
+                <div class="card__item__buttons">
+                    <div class="card__item__buttons__item">1</div>
+                    <div class="card__item__buttons__item">2</div>
+                    <div class="card__item__buttons__item">3</div>
+                    <div class="card__item__buttons__item">4</div>
+                </div>
+            </div>
+            <div class="card__item">
+                <div class="card__item__header">
+                    <span class="card__item__header--main">Card Item Text</span> <span class="card__item__header--subtext">Subtext</span>
+                </div>
+                <p>Some text goes here because text is text. Some text goes here because text is text. Some text goes
+                    here because text is adn theen there are issues with flex and grid. REpsonsive circles with text in
+                    the centre are intensly irritating to do. text. Some text goes here because text is text. Some text
+                    goes here because
+                    text is text. Some text goes here because text is text. Some text goes here because text is text.</p>
+                <div class="card__item__buttons">
+                    <div class="card__item__buttons__item">1</div>
+                    <div class="card__item__buttons__item">2</div>
+                    <div class="card__item__buttons__item">3</div>
+                    <div class="card__item__buttons__item">4</div>
+                </div>
+            </div>
+        </section>
+        <section class="ads card">
+            <h1>Advertisements</h1>
+            <div class="card__ad__item">
+                <div class="card__ad__item__icon">1</div>
+                <div class="card__ad__item__details">one</div>
+                <input class="card__ad__item__button" type="button" value="Follow">
+            </div>
+            <div class="card__ad__item">
+                <div class="card__ad__item__icon">1</div>
+                <div class="card__ad__item__details">one</div>
+                <input class="card__ad__item__button" type="button" value="Follow">
+            </div>
+            <div class="card__ad__item">
+                <div class="card__ad__item__icon">1</div>
+                <div class="card__ad__item__details">one</div>
+                <input class="card__ad__item__button" type="button" value="Follow">
+            </div>
+            <div class="card__footer">A footer resides here</div>
+        </section>
+        <section class="footer card">
+            <div class="card__footer">A footer resides here</div>
+        </section>
+    </div>
+    <script type="text/javascript"></script>
+</body>
+
+</html>

@@ -123,11 +123,7 @@
       .item__picture{
           width: 100%;          
           background: rgba(0,0,0,0.1);
-      }
-      .item__picture--tall{          
-          height: 60%;          
-          margin-bottom: 1rem;
-      }
+      }      
       .item__details{
           margin-left: 1rem;
       }
@@ -138,9 +134,23 @@
           font-size: 13px;          
       }
       
-      .moments__grid:first-child, .moments__grid:nth-of-type(5n){
+      .moments__grid:first-child, .moments__grid:nth-of-type(8n){
           grid-row: span 3;                    
           flex-direction: column;
+      }
+      .moments__grid:first-child > .item__picture{
+        height: 60%;          
+        margin-bottom: 1rem;        
+      }
+      .moments__grid:first-child > .item__details{
+          margin-left: 0;
+      }
+      .moments__grid:nth-of-type(8n) > .item__picture{
+        height: 60%;          
+        margin-bottom: 1rem;                
+      }
+      .moments__grid:nth-of-type(8n) > .item__details{
+          margin-left: 0;
       }
       
     </style>
@@ -166,7 +176,43 @@
     <div class="main">
         <section class="moments">
             <section class="moments__grid">
-                <div class="item__picture item__picture--tall"></div>
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One111</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
+                <div class="item__details">
+                    <h1>Heading One</h1>
+                    <p>Meta Data</p>
+                    <p>Some text needs to go there beacuse I need filler space.</p>
+                    <p>989 Views</p>
+                </div>
+            </section>
+            <section class="moments__grid">
+                <div class="item__picture"></div>
                 <div class="item__details">
                     <h1>Heading One</h1>
                     <p>Meta Data</p>
