@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>Royu Functions</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="royufunctions" content="royu's samples for netlify functions" />
+    <link rel="icon" type="image/png" href="./images/royu.png" />
+    <link rel="canonical" href="https://ryfaas.netlify.com" />
+    <style>
+      ::-webkit-scrollbar {
+        display: none;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: palegoldenrod;
+        display: grid;
+        width: 100vw;
+        height: 100vh;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: repeat(12, 1fr);
+      }
+
+      nav {
+        background: paleturquoise;
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        display: flex;
+        margin: 0;
+        padding: 0;
+
+        justify-content: space-between;
+        flex-direction: column;
+        grid-row: 1/12;
+      }
+
+      nav ul {
+        width: 100%;
+        background: palegoldenrod;
+        list-style: none;
+      }
+      nav li {
+        width: 100%;
+      }
+
+      .controls {
+        grid-column: 1 / -1;
+        grid-row: 12 / span 2;
+        background: #333;
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .main {
+        grid-column: 3 / -1;
+        grid-row: 1/12;
+        background: lavender;
+        color: black;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .left {
+        width: 100%;
+        background: palegoldenrod;
+        height: 30%;
+      }
+      .right {
+        width: 100%;
+        background: papayawhip;
+        padding-right: 100px;
+        height: 70%;
+        overflow-y: scroll;
+      }
+
+      @media screen and (min-width: 720px) {
+        body {
+          background: palegreen;
+        }
+      }
+
+      @media screen and (min-width: 1120px) {
+        body {
+          background: palevioletred;
+        }
+
+        .main {
+          flex-direction: row;
+        }
+
+        .left {
+          width: 50%;
+          background: palegoldenrod;
+          height: 100%;
+        }
+        .right {
+          width: 50%;
+          background: papayawhip;
+          padding-right: 100px;
+          height: 100%;
+          overflow-y: scroll;
+        }
+
+        nav {
+          width: 200px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav>
+      <ul>
+        <li>Home</li>
+        <li>Search</li>
+        <li>Home</li>
+        <li>Saved</li>
+      </ul>
+      <ul>
+        <li>Signup</li>
+        <li>Login</li>
+        <li>Details</li>
+      </ul>
+    </nav>
+    <section class="main">
+      <section class="left">l</section>
+      <section class="right">
+        <ul>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+          <li>Signup</li>
+          <li>Login</li>
+          <li>Details</li>
+        </ul>
+      </section>
+    </section>
+    <section class="controls">
+      <section class="controls__section">MURP</section>
+    </section>
+    <script type="text/javascript"></script>
+  </body>
+</html>
