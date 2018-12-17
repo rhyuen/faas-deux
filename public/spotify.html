@@ -14,14 +14,22 @@
       ::-webkit-scrollbar {
         display: none;
       }
+      :root{
+          --accent-color: #03a87c;
+          --hover-accent-colour: #57AD68;
+          --subtext-grey: #b3b3b3;
+          --gradientbg: linear-gradient(#03a87c, black);;
+          --charcoal: #343434;
+      }
 
       * {
         box-sizing: border-box;
+        font-size: 14px;
+        color: white;
       }
       body {
         margin: 0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: palegoldenrod;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;        
         display: grid;
         width: 100vw;
         height: 100vh;
@@ -30,7 +38,7 @@
       }
 
       nav {
-        background: paleturquoise;
+        background: black;
         grid-column-start: 1;
         grid-column-end: span 2;
         display: flex;
@@ -43,19 +51,48 @@
       }
 
       nav ul {
-        width: 100%;
-        background: palegoldenrod;
+        width: 100%;        
         list-style: none;
+        display: flex;
+        flex-direction: column;        
+        padding: 0;
       }
-      nav li {
+      nav li {                  
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+  
+      .icon{
+        position: relative;
+        width: 50%;
+        border: 1px solid white;
+        margin-bottom: 20px;
+      }
+      .icon:after{
+        content: "";
+        display: block;
+        padding-bottom: 100%;
+      }
+      .icon__center{
+        color: white;
+        position: absolute;
+        font-size: 20px;        
+        display: flex;
+        justify-content: center;
+        align-items: center;
         width: 100%;
+        height: 100%;
       }
 
+      
+
       .controls {
+          border-top: 1px solid rgba(0,0,0,0.1);
         grid-column: 1 / -1;
         grid-row: 12 / span 2;
         background: #333;
-        color: white;
+        color: var(--subtext-grey);
         display: flex;
         justify-content: center;
         align-items: center;
@@ -63,24 +100,107 @@
 
       .main {
         grid-column: 3 / -1;
-        grid-row: 1/12;
-        background: lavender;
-        color: black;
+        grid-row: 1/12;                
         display: flex;
         flex-direction: column;
       }
 
       .left {
+        padding: 30px;
         width: 100%;
-        background: palegoldenrod;
-        height: 30%;
+        background: #343434;
+        height: 30%;        
       }
-      .right {
+      .left__cover{          
+          display: grid;
+          grid-template-columns: 150px 100px 100px;
+          background: inherit;                    
+          grid-gap: 10px;
+          grid-template-rows: 150px 50px;
+      }
+      
+      .cover__image{
+          grid-column: 1;
+          grid-row: 1;
+          background: #03a87c;          
+          border-radius: 5px;
+          box-shadow: 2px 4px rgba(115, 155, 107, 0.1);
+      }
+      .cover__image:hover{
+          background: #57AD68;
+          box-shadow: 2px 4px rgba(115, 155, 107, 0.5);
+      }
+
+      .cover__description{          
+          grid-column: 2/ span 3;          
+          grid-row: 1/span 2;
+          background: inherit;
+          width: 100%;          
+          padding-left: 30px;          
+      }
+
+      .cover__description h1{
+          margin : 0;   
+          letter-spacing: 2px;
+          padding: 0;
+          font-size: 30px;       
+      }
+      .cover__description h2{
+          margin: 0;
+          font-weight: 400;
+      }
+      .cover__description p{          
+          line-height: 1.5;
+          color: grey;
+      }
+
+      .cover__description__container{
+          display: flex;
+          justify-content: left;          
+      }
+      .cover__description__container__button{
+          text-transform: uppercase;
+          background: var(--accent-color);
+          border: 0;
+          font-size: 13px;
+          margin-right: 20px;
+          padding: 10px 30px;
+          border-radius: 30px;
+      }
+      .cover__description__container__button:hover{
+          background: var(--hover-accent-colour);
+      }
+
+      .right {        
+        padding: 30px;
         width: 100%;
-        background: papayawhip;
-        padding-right: 100px;
+        background: #343434;        
         height: 70%;
         overflow-y: scroll;
+      }
+
+      .right ul {                
+        border-top: 1px solid #b3b3b3;        
+        list-style: none;
+        padding: 30px 0;        
+        margin: 0;
+      }
+      .right ul li{
+          display: flex;
+          background: inherit;
+          color: #b3b3b3;
+          justify-content: space-between;
+          line-height: 1.5;
+          letter-spacing: 1px;
+          border-radius: 5px;
+          padding: 10px 15px;
+          width: 100%;
+      }      
+      .right ul li:hover{
+          background: rgba(0,0,0,0.1);
+      }
+      .subtext{
+          color: #b3b3b3;
       }
 
       @media screen and (min-width: 720px) {
@@ -91,7 +211,7 @@
 
       @media screen and (min-width: 1120px) {
         body {
-          background: palevioletred;
+          background: var(--gradientbg);
         }
 
         .main {
@@ -100,12 +220,12 @@
 
         .left {
           width: 50%;
-          background: palegoldenrod;
+          background: #343434;
           height: 100%;
         }
         .right {
-          width: 50%;
-          background: papayawhip;
+          width: 45%;
+          background: #343434;
           padding-right: 100px;
           height: 100%;
           overflow-y: scroll;
@@ -121,76 +241,184 @@
   <body>
     <nav>
       <ul>
-        <li>Home</li>
-        <li>Search</li>
-        <li>Home</li>
-        <li>Saved</li>
+        <li>
+            <div class = "icon">
+                <div class = "icon__center">H</div>
+            </div>            
+        </li>
+        <li>
+            <div class = "icon">
+                <div class = "icon__center">S</div>
+            </div>            
+        </li>
+        <li>
+            <div class = "icon">
+                <div class = "icon__center">S</div>
+            </div>            
+        </li>
+        <li>
+            <div class = "icon">
+                <div class = "icon__center">H</div>
+            </div>            
+        </li>
       </ul>
       <ul>
-        <li>Signup</li>
-        <li>Login</li>
-        <li>Details</li>
+        <li>
+        <div class = "icon">
+            <div class = "icon__center">L</div>
+        </div>            
+    </li>
+    <li>
+            <div class = "icon">
+                <div class = "icon__center">S</div>
+            </div>            
+        </li> <li>
+                <div class = "icon">
+                    <div class = "icon__center">F</div>
+                </div>            
+            </li>
       </ul>
     </nav>
     <section class="main">
-      <section class="left">l</section>
-      <section class="right">
+      <section class="left"><section class = "left__cover">
+          <div class = "cover__image"></div>
+          <div class = "cover__description">
+              <h1>The Title</h1>
+              <h2>Subtitle goes here</h2>
+              <p class = "subtext">'Tis the season to settle in with a warm cup of coffee and these stripped down holiday tunes.</p>
+              <p class = "subtext">Another description</p> 
+              <div class = "cover__description__container">
+                 <button class = "cover__description__container__button">PLay </button>
+                 <button class = "cover__description__container__button">Save </button>
+                 <button class = "cover__description__container__button">Download </button>                 
+              </div>
+          </div>
+      </section></section>
+      <span class="right">
         <ul>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
+          <li>
+            <span>
+              <article>Title and Some other text</article>
+              <article class = "subtext">Details and some more details</article>
+            </span>
+            <aside class = "subtext">3:16</aside>
+          </li>
+          <li>
+            <span>
+                <article>Title and Some other text</article>
+                <article class = "subtext">Details and some more details</article>
+            </span>
+            <aside class = "subtext">3:16</aside>
+            </li>
+            <li>
+                    <span>
+                      <article>Title and Some other text</article>
+                      <article class = "subtext">Details and some more details</article>
+                    </span>
+                    <aside class = "subtext">3:16</aside>
+                  </li>
+                  <li>
+                        <span>
+                          <article>Title and Some other text</article>
+                          <article class = "subtext">Details and some more details</article>
+                        </span>
+                        <aside class = "subtext">3:16</aside>
+                      </li>
 
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
-          <li>Signup</li>
-          <li>Login</li>
-          <li>Details</li>
+                      <li>
+                            <span>
+                              <article>Title and Some other text</article>
+                              <article class = "subtext">Details and some more details</article>
+                            </span>
+                            <aside class = "subtext">3:16</aside>
+                          </li>
+                          <li>
+                                <span>
+                                  <article>Title and Some other text</article>
+                                  <article class = "subtext">Details and some more details</article>
+                                </span>
+                                <aside class = "subtext">3:16</aside>
+                              </li>
+                              <li>
+                                    <span>
+                                      <article>Title and Some other text</article>
+                                      <article class = "subtext">Details and some more details</article>
+                                    </span>
+                                    <aside class = "subtext">3:16</aside>
+                                  </li>
+                                  <li>
+                                        <span>
+                                          <article>Title and Some other text</article>
+                                          <article class = "subtext">Details and some more details</article>
+                                        </span>
+                                        <aside class = "subtext">3:16</aside>
+                                      </li><li>
+                                            <span>
+                                              <article>Title and Some other text</article>
+                                              <article class = "subtext">Details and some more details</article>
+                                            </span>
+                                            <aside class = "subtext">3:16</aside>
+                                          </li><li>
+                                                <span>
+                                                  <article>Title and Some other text</article>
+                                                  <article class = "subtext">Details and some more details</article>
+                                                </span>
+                                                <aside class = "subtext">3:16</aside>
+                                              </li><li>
+                                                    <span>
+                                                      <article>Title and Some other text</article>
+                                                      <article class = "subtext">Details and some more details</article>
+                                                    </span>
+                                                    <aside class = "subtext">3:16</aside>
+                                                  </li><li>
+                                                        <span>
+                                                          <article>Title and Some other text</article>
+                                                          <article class = "subtext">Details and some more details</article>
+                                                        </span>
+                                                        <aside class = "subtext">3:16</aside>
+                                                      </li><li>
+                                                            <span>
+                                                              <article>Title and Some other text</article>
+                                                              <article class = "subtext">Details and some more details</article>
+                                                            </span>
+                                                            <aside class = "subtext">3:16</aside>
+                                                          </li><li>
+                                                                <span>
+                                                                  <article>Title and Some other text</article>
+                                                                  <article class = "subtext">Details and some more details</article>
+                                                                </span>
+                                                                <aside class = "subtext">3:16</aside>
+                                                              </li><li>
+                                                                    <span>
+                                                                      <article>Title and Some other text</article>
+                                                                      <article class = "subtext">Details and some more details</article>
+                                                                    </span>
+                                                                    <aside class = "subtext">3:16</aside>
+                                                                  </li><li>
+                                                                        <span>
+                                                                          <article>Title and Some other text</article>
+                                                                          <article class = "subtext">Details and some more details</article>
+                                                                        </span>
+                                                                        <aside class = "subtext">3:16</aside>
+                                                                      </li>
+
+
+                                                                      <li>
+                                                                            <span>
+                                                                              <article>Title and Some other text</article>
+                                                                              <article class = "subtext">Details and some more details</article>
+                                                                            </span>
+                                                                            <aside class = "subtext">3:16</aside>
+                                                                          </li>
+
+                                                                          <li>
+                                                                                <span>
+                                                                                  <article>Title and Some other text</article>
+                                                                                  <article class = "subtext">Details and some more details</article>
+                                                                                </span>
+                                                                                <aside class = "subtext">3:16</aside>
+                                                                              </li>
+          
         </ul>
       </section>
     </section>
